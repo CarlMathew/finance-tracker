@@ -2,10 +2,7 @@ resource "railway_project" "finance_tracker" {
   name = var.project_name
 }
 
-resource "railway_environment" "production" {
-  name       = var.environment_name
-  project_id = railway_project.finance_tracker.id
-}
+
 
 resource "railway_service" "backend" {
   name       = var.backend_service_name
