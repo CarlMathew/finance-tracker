@@ -1,9 +1,10 @@
 terraform {
-  required_version = ">=1.8.0"
+  required_version = ">= 1.8.0"
+
 
   required_providers {
-    render = {
-      source = "render-oss/render"
+    railway = {
+      source = "terraform-community-providers/railway"
     }
   }
 }
