@@ -3,14 +3,13 @@ output "railway_project_id" {
   value       = railway_project.finance_tracker.id
 }
 
-output "railway_environment_id" {
-  description = "Railway Production environment ID"
-  value       = railway_environment.production.id
-
-}
-
 
 output "railway_backend_service_id" {
   description = "Railway backend service ID"
   value       = railway_service.backend.id
+}
+
+output "railway_frontend_service_id" {
+  description = "Railway frontend service ID"
+  value       = railway_service.frontend.id
 }

@@ -39,3 +39,15 @@ variable "backend_root_directory" {
   default     = "backend"
 
 }
+
+variable "frontend_service_name" {
+  description = "Railway frontend service name"
+  type        = string
+  default     = "finance-tracker-frontend"
+}
+
+variable "frontend_root_directory" {
+  description = "Frontend directory inside the monorepo"
+  type        = string
+  default     = "finance-frontend"
+}
