@@ -31,7 +31,8 @@ resource "railway_service" "frontend" {
   project_id = railway_project.finance_tracker.id
 
   source_repo        = var.github_repository
-  source_repo_branch = var.github_repository
+  source_repo_branch = var.github_branch
+
 
   root_directory  = "/${var.frontend_root_directory}"
   dockerfile_path = "/${var.frontend_root_directory}/Dockerfile"
