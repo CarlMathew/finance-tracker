@@ -11,6 +11,26 @@ jobs:
   test:
     runs-on: ubuntu-latest
 
-  steps:
-    - name: Checkout repository
-      uses: actions/checkout@v4
+    steps:
+        - name: Checkout repository
+        uses: actions/checkout@v4
+
+        - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+            python-version: "3.11"
+
+        - name: Install uv
+        uses: astral-sh/setup-uv@v6
+
+        - name: Install dependencies
+        working-directory: ./finance-backend
+        run: uv sync
+
+        - name: Lint Backend
+        working-directory: ./finance-backend
+        run: uv run ruff check .
+
+        - name: Run tests
+        working-directory: ./finance-backend
+        run: uv run pytest

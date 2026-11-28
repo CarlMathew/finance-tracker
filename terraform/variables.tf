@@ -16,11 +16,6 @@ variable "environment_name" {
   default     = "production"
 }
 
-variable "backend_service_name" {
-  description = "Name of the FastAPI service"
-  type        = string
-  default     = "finance-tracker-api"
-}
 
 variable "github_repository" {
   description = "Github repository in owner/repository format"
@@ -33,10 +28,16 @@ variable "github_branch" {
   default     = "main"
 }
 
+variable "backend_service_name" {
+  description = "Name of the FastAPI service"
+  type        = string
+  default     = "finance-tracker-backend"
+}
+
 variable "backend_root_directory" {
   description = "Backend directory inside the monorepo"
   type        = string
-  default     = "backend"
+  default     = "finance-backend"
 
 }
 

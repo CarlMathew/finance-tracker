@@ -42,3 +42,5 @@ provider-schema.json
 # Operating system
 .DS_Store
 Thumbs.db
+
+**/terraform-fail/

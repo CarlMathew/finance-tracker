@@ -1,0 +1,33 @@
+name: Frontend CI
+
+on:
+  pull_request:
+    branches:
+      - main
+    paths:
+      - "finance-frontend/**"
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+        - name: Checkout repository
+        uses: actions/checkout@v4
+
+        - name: Setup Node JS
+        uses: actions/setup-node@v4
+        with:
+            node-version: "20"
+
+        - name: Install dependencies
+        working-directory: ./finance-frontend
+        run: npm ci
+
+        - name: Lint Frontend
+        working-directory: ./finance-frontend
+        run: npm run lint
+
+        - name: Build Frontend
+        working-directory: ./finance-frontend
+        run: npm run build
