@@ -20,7 +20,7 @@ resource "railway_service" "backend" {
   restart_policy_max_retries = 10
 
   watch_patterns = [
-    "/backend/**"
+    "/finace-backend/**"
   ]
 
 }
