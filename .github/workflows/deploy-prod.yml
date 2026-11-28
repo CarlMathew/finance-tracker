@@ -15,16 +15,8 @@ jobs:
       TF_VAR_github_repository: ${{ github.repository }}
 
     steps:
-      - name: Checkout repository
+      - name: Checkout reporsitory
         uses: actions/checkout@v4
-
-      - name: Verify Railway token
-        run: |
-          if [ -z "$TF_VAR_railway_token" ]; then
-            echo "ERROR: Railway token is empty"
-            exit 1
-          fi
-          echo "Railway token is available"
 
       - name: Setup Terraform
         uses: hashicorp/setup-terraform@v3
@@ -33,8 +25,20 @@ jobs:
 
       - name: Terraform Init
         working-directory: ./terraform
-        run: terraform init -input=false
+        run: terraform init
+
+      - name: Verify Railway token
+        run: |
+          if [ -z "$TF_VAR_railway_token" ]; then
+          echo "ERROR: Railway token is empty"
+          exit 1
+          fi
+          echo "Railway token is available"
 
       - name: Terraform Plan
         working-directory: ./terraform
-        run: terraform plan -input=false
+        run: terraform plan -out=tfplan
+
+      - name: Terraform Apply
+        working-directory: ./terraform
+        run: terraform apply tfplan
